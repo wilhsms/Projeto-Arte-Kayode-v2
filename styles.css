@@ -247,6 +247,7 @@ h3 {
   box-shadow: 0 16px 42px rgba(80, 20, 36, .1);
 }
 .program-grid p, .program-grid li, .cards p { color: var(--muted); }
+.cards-gray p { color: #b3b3b3; }
 .program-grid ul { padding-left: 20px; margin: 18px 0 0; }
 .testimonials {
   background: var(--primary-dark);
