@@ -6,7 +6,7 @@
     <title>Projeto Arte Kayode</title>
     <meta
       name="description"
-      content="Projeto social de balé do Ile Ashe Akin Iyasaba em Vista Linda, Cariacica/ES."
+      content="Projeto social de balé do Ile Ashe Akin Iyasaba em Vista Linda/Itacibá, Cariacica/ES."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,8 +40,8 @@
           <p class="eyebrow">Ile Ashe Akin Iyasaba — Projeto Social de Balé</p>
           <h1>Todo passo <span>começa com um sonho.</span></h1>
           <p>
-            Com 27 anos de atuação comunitária no bairro Vista Linda, o Ile Ashe
-            Akin Iyasaba retoma em 2025 seu projeto de balé: arte, identidade
+            Com 27 anos de atuação comunitária no bairro Vista Linda/Itacibá, em Cariacica, o Ile Ashe
+            Akin Iyasaba retoma em 2026 seu projeto de balé: arte, identidade
             cultural e inclusão social.
           </p>
           <div class="hero-actions">
@@ -87,7 +87,7 @@
           <article><strong>27</strong><span>Anos de comunidade</span><small>desde 1997</small></article>
           <article><strong>6</strong><span>Anos de balé</span><small>projeto original</small></article>
           <article><strong>6+</strong><span>Apresentações</span><small>em teatros</small></article>
-          <article><strong>2025</strong><span>Retomada</span><small>novo início</small></article>
+          <article><strong>2026</strong><span>Retomada</span><small>novo início</small></article>
         </div>
         <div class="cards">
           <article>
@@ -99,7 +99,7 @@
             <p>O projeto ofereceu aulas, ensaios e apresentações reais para crianças da comunidade.</p>
           </article>
           <article>
-            <h3>Retomada em 2025</h3>
+            <h3>Retomada em 2026</h3>
             <p>A demanda local e a trajetória do Ile movem a volta do Projeto Arte Kayode.</p>
           </article>
         </div>
@@ -109,7 +109,7 @@
         <div class="center reveal">
           <p class="eyebrow">Como funciona</p>
           <h2>O programa <span>Arte Kayode</span></h2>
-          <p>Turmas gratuitas para crianças, adolescentes e jovens no bairro Vista Linda, em Cariacica/ES.</p>
+          <p>Turmas gratuitas para crianças, adolescentes e jovens no bairro Vista Linda/Itacibá, em Cariacica/ES.</p>
         </div>
         <div class="program-grid">
           <article>
@@ -183,7 +183,7 @@
           <article>
             <h3>Doação Mensal</h3>
             <p>Contribuições regulares garantem continuidade e planejamento.</p>
-            <a class="button primary" href="#contato">Quero doar</a>
+            <a class="button primary" href="#doacao-pix">Quero doar</a>
           </article>
           <article>
             <h3>Voluntariado</h3>
@@ -196,6 +196,25 @@
             <a class="button secondary" href="#contato">Falar com a equipe</a>
           </article>
         </div>
+        <div class="pix-donation reveal" id="doacao-pix">
+          <div class="pix-copy">
+            <p class="eyebrow">Doação por Pix</p>
+            <h3>Seu apoio mantém o sonho destes jovens dançando</h3>
+            <p>Abra o aplicativo do seu banco, escaneie o QR Code ou copie o código Pix abaixo. Você escolhe o valor da contribuição.</p>
+            <div class="pix-key">
+              <span>Chave Pix — CNPJ</span>
+              <strong>53.564.492/0001-04</strong>
+            </div>
+            <textarea id="pix-code" readonly aria-label="Código Pix Copia e Cola">00020126360014br.gov.bcb.pix0114535644920001045204000053039865802BR5919PROJETO ARTE KAYODE6009CARIACICA62070503***6304DAE7</textarea>
+            <button class="button primary" id="copy-pix" type="button">Copiar código Pix</button>
+            <p class="pix-message" id="pix-message" role="status" aria-live="polite" hidden></p>
+          </div>
+          <div class="pix-qr">
+            <img src="assets/pix-qrcode.png" alt="QR Code Pix para doação ao Projeto Arte Kayode" />
+            <strong>Escaneie para doar</strong>
+            <span>Pix sem valor fixo</span>
+          </div>
+        </div>
       </section>
 
       <section id="contato" class="section contact">
@@ -203,13 +222,13 @@
           <p class="eyebrow">Fale conosco</p>
           <h2>Vamos conversar <span>sobre isso</span></h2>
           <p>Para inscrição, voluntariado, doação ou parceria, entre em contato com nossa equipe.</p>
-          <a href="tel:+5527997999920">(27) 99799-9920 — Ângela Maria Neppel</a>
-          <a href="mailto:contato@ileashe.org.br">contato@ileashe.org.br</a>
-          <span>Bairro Vista Linda — ES</span>
+          <!--<a href="tel:+5527997999920">(27) 99799-9920 — Ângela Maria Neppel</a>-->
+          <a href="mailto:dev.wilhas.souza@gmail.com">contato@ileashe.org.br</a>
+          <span>Bairro Vista Linda/Itacibá, Cariacica — ES</span>
         </div>
         <form class="contact-form reveal" id="contact-form">
-          <label>Nome <input name="nome" required placeholder="Seu nome" /></label>
-          <label>E-mail <input name="email" type="email" required placeholder="seu@email.com" /></label>
+          <label>Nome <input name="nome" required maxlength="120" autocomplete="name" placeholder="Seu nome" /></label>
+          <label>E-mail <input name="email" type="email" required maxlength="254" autocomplete="email" placeholder="seu@email.com" /></label>
           <label>Assunto
             <select name="assunto" required>
               <option value="">Selecione o assunto</option>
@@ -219,9 +238,10 @@
               <option>Parceria institucional</option>
             </select>
           </label>
-          <label>Mensagem <textarea name="mensagem" rows="4" required placeholder="Conte-nos mais..."></textarea></label>
+          <label class="form-honeypot" aria-hidden="true">Website <input name="website" tabindex="-1" autocomplete="off" /></label>
+          <label>Mensagem <textarea name="mensagem" rows="4" required maxlength="5000" placeholder="Conte-nos mais..."></textarea></label>
           <button class="button primary" type="submit">Enviar mensagem</button>
-          <p class="form-message" id="form-message" hidden>Mensagem recebida. Nossa equipe entrará em contato em até 48 horas.</p>
+          <p class="form-message" id="form-message" role="status" aria-live="polite" hidden></p>
         </form>
       </section>
     </main>
@@ -229,7 +249,7 @@
     <footer class="footer">
       <strong>Projeto Arte Kayode</strong>
       <span>© 2025 Ile Ashe Akin Iyasaba. Todos os direitos reservados.</span>
-      <span>Bairro Vista Linda — ES · (27) 99799-9920</span>
+      <span>Bairro Vista Linda/Itacibá, Cariacica — ES</span>
     </footer>
 
     <div class="lightbox" id="lightbox" hidden>

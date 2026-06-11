@@ -18,7 +18,7 @@ const photos = [
 
 const posts = [
   {
-    title: "O Projeto Arte Kayode está de volta: inscrições abertas para 2025",
+    title: "O Projeto Arte Kayode está de volta: inscrições abertas para 2026",
     summary: "Após mais de uma década, o projeto de balé do Ile Ashe Akin Iyasaba retoma suas atividades com o mesmo coração e ainda mais força.",
     date: "15 de junho de 2025",
     tag: "Notícias",
@@ -196,10 +196,57 @@ setInterval(() => {
   renderTestimonial((testimonialIndex + 1) % testimonials.length);
 }, 5000);
 
-document.getElementById("contact-form").addEventListener("submit", (event) => {
+document.getElementById("contact-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  event.currentTarget.reset();
-  document.getElementById("form-message").hidden = false;
+
+  const form = event.currentTarget;
+  const submitButton = form.querySelector('button[type="submit"]');
+  const formMessage = document.getElementById("form-message");
+  const originalButtonText = submitButton.textContent;
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Enviando...";
+  formMessage.hidden = true;
+  formMessage.classList.remove("error");
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(Object.fromEntries(new FormData(form))),
+    });
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Não foi possível enviar a mensagem.");
+    }
+
+    form.reset();
+    formMessage.textContent = "Mensagem enviada. Nossa equipe entrará em contato em até 48 horas.";
+  } catch (error) {
+    formMessage.textContent = error.message || "Não foi possível enviar. Tente novamente mais tarde.";
+    formMessage.classList.add("error");
+  } finally {
+    formMessage.hidden = false;
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+});
+
+document.getElementById("copy-pix").addEventListener("click", async () => {
+  const pixCode = document.getElementById("pix-code");
+  const pixMessage = document.getElementById("pix-message");
+
+  try {
+    await navigator.clipboard.writeText(pixCode.value);
+  } catch {
+    pixCode.select();
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+  }
+
+  pixMessage.textContent = "Código Pix copiado. Agora é só colar no aplicativo do seu banco.";
+  pixMessage.hidden = false;
 });
 
 renderGallery();
